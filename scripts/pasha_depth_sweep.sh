@@ -68,6 +68,11 @@ case "$CARD" in
 esac
 [ -s "$BIAS" ] || { say "REFUSING: no bias file at $BIAS. #2 and #5c cannot be measured."; exit 2; }
 [ -s "$MODELS/dflash-slim-Q4_0.gguf" ] || { say "REFUSING: slim drafter missing."; exit 2; }
+# The #5b mismatch test calibrates a second bias from this corpus. Without the preflight a
+# missing file made docker fail silently and the test reported "the tool refused to calibrate",
+# which is the exact inverse of the real finding.
+CALIB=${CALIB:-$D/rerun-2026-08/calib-corpus.txt}
+[ -s "$CALIB" ] || { say "REFUSING: no calibration corpus at $CALIB. Test 5b-B cannot run."; exit 2; }
 
 # ------------------------------------------------------- ETA gate and n=1 proof gate
 # Both exist because on 2026-08-29 this exact script was armed with no cell proved and no ETA
@@ -324,17 +329,26 @@ fi
 
 say "  B. bias calibrated at -ctk q8_0, served at -ctk q4_0 (the mismatch he describes)"
 WRONG=$BADDIR/bias-q8calib.gguf
+CALRC=0
 if [ ! -s "$WRONG" ]; then
+  CALLOG=$OUT/calib-q8-attempt.log
   docker run --rm --gpus all -e CUDA_VISIBLE_DEVICES="$CARD" \
     -v "$BIN":/prism:ro -v "$MODELS":/models -v "$BADDIR":/bad \
-    -v "$D/rerun-2026-08":/w:ro --entrypoint /prism/llama-kv-mean-center "$IMG" \
-    -m "/models/$TERN" -f /w/calib-corpus.txt -o /bad/bias-q8calib.gguf \
-    -ctk q8_0 -fa on -ngl 99 -c 512 --chunks 200 >>"$LOG" 2>&1
+    -v "$(dirname "$CALIB")":/w:ro --entrypoint /prism/llama-kv-mean-center "$IMG" \
+    -m "/models/$TERN" -f "/w/$(basename "$CALIB")" -o /bad/bias-q8calib.gguf \
+    -ctk q8_0 -fa on -ngl 99 -c 512 --chunks 200 > "$CALLOG" 2>&1
+  CALRC=$?
+  cat "$CALLOG" >> "$LOG"
 fi
-if [ ! -s "$WRONG" ]; then
-  say "  B RESULT: llama-kv-mean-center REFUSED to calibrate at -ctk q8_0. That is itself an"
-  say "     answer: the mismatch cannot be created, so it cannot reach load time."
-  grep -iE "q8_0|ctk|only|support" "$LOG" | tail -5 | tee -a "$LOG"
+# Three outcomes, kept distinct. The first version collapsed them into one and would have
+# reported a harness fault as a finding about the tool.
+if [ "$CALRC" -ne 0 ] && [ ! -s "$WRONG" ]; then
+  say "  B RESULT: llama-kv-mean-center exited $CALRC and produced no bias. Its own words:"
+  tail -12 "${CALLOG:-$LOG}" | tee -a "$LOG"
+  say "     If that is a refusal to calibrate at -ctk q8_0, the mismatch cannot be created and"
+  say "     so cannot reach load time. If it is anything else, this test did not run. READ IT."
+elif [ ! -s "$WRONG" ]; then
+  say "  B RESULT: the tool exited 0 and still wrote no bias file. Test 5b-B did NOT run."
 else
   say "  calibrated a q8_0 bias: $(stat -c %s "$WRONG") B"
   # srv_up mounts $(dirname "$BIAS") as /bias, so BIAS must point into BADDIR for this test.

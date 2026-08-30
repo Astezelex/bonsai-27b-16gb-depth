@@ -75,7 +75,7 @@ def f8_drafter_depth(d, outdir):
     wd = [r["draft_tps"] for r in rows]
 
     def human(t):
-        return "0" if t == 0 else (f"{t/1000:.0f}k" if t < 1000000 else f"{t/1000:.0f}k")
+        return "0" if t == 0 else f"{t/1000:.0f}k"
 
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(8.6, 6.6), sharex=True,
                                    gridspec_kw={"height_ratios": [1, 1.2], "hspace": 0.16})
@@ -354,6 +354,10 @@ def f11_measurable_range(d, outdir):
     the feature exists to improve, is not.
     """
     target = 262144
+    # Read from the emitted table, never retyped. Chapter 9 claims no figure carries a
+    # hardcoded number, and this figure was the one making that sentence false.
+    reserve = {r["n_ctx"]: r["gb"] for r in d["perplexity_reserve"]}
+    reserve_at_target = reserve[target]
     bars = [
         ("resident VRAM", "NVML with the server up", 266240, True,
          "reaches the target"),
@@ -362,7 +366,7 @@ def f11_measurable_range(d, outdir):
         ("draft acceptance", "llama-server draft counters", 131050, False,
          "drafted server will not\nload on a 16 GB card"),
         ("quality, KL divergence", "llama-perplexity", 16384, False,
-         "llama-perplexity reserves\n159 GB of host RAM at 262k"),
+         f"llama-perplexity reserves\n{reserve_at_target:.0f} GB of host RAM at 262k"),
     ]
     fig, ax = plt.subplots(figsize=(9.2, 4.1))
     style_ax(ax)
@@ -404,7 +408,7 @@ def f11_measurable_range(d, outdir):
     fig.text(0.006, -0.06,
              "Limits measured on this box: one RTX 5060 Ti (16,311 MiB physical, 15,888 usable), 31 GB host RAM.\n"
              "The perplexity ceiling belongs to the tool and the vocabulary, not to the "
-             "card: n_ctx x n_vocab x 4 bytes is 159.3 GB at 262,144\n"
+             f"card: n_ctx x n_vocab x 4 bytes is {reserve_at_target} GB at 262,144\n"
              "for a 151,936-token vocabulary. The 32,768 rung was killed by the kernel at "
              "25.5 GB resident.",
              fontsize=7.5, color=MUTED)

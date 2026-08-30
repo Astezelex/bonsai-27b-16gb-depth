@@ -5,6 +5,32 @@ import csv, glob, json, os, re, statistics
 R = os.environ.get("BONSAI_ROOT", "/mnt/bigdisk/bonsai")
 out = {}
 
+def _nvml_total_mib():
+    """Physical VRAM of device 0, from NVML."""
+    import ctypes as c
+    nv = c.CDLL("libnvidia-ml.so.1"); nv.nvmlInit_v2()
+    h = c.c_void_p(); nv.nvmlDeviceGetHandleByIndex_v2(0, c.byref(h))
+    class M(c.Structure):
+        _fields_ = [("t", c.c_ulonglong), ("f", c.c_ulonglong), ("u", c.c_ulonglong)]
+    m = M(); nv.nvmlDeviceGetMemoryInfo(h, c.byref(m))
+    return m.t >> 20
+
+
+def _usable_from_engine_log():
+    """What the engine reports it can use, parsed from a kept run log, not retyped."""
+    import re as _re
+    for f in sorted(glob.glob(f"{R}/earlybench-*/run.log")):
+        # Device line, not the "Total VRAM" line. A looser pattern matched
+        # "found 2 CUDA devices (Total VRAM: 31777 MiB)" and emitted the sum of both cards
+        # as the usable figure for one. Anchor on "Device N:".
+        m = _re.search(r"Device \d+:.*?VRAM:\s*(\d+)\s*MiB",
+                       open(f, errors="replace").read())
+        if m:
+            return int(m.group(1))
+    raise SystemExit("cannot find the engine's reported usable VRAM in any earlybench run.log")
+
+
+
 # ---- depth sweep: natural filler. Two runs cover the five depths. -----------------------
 SWEEPS = [f"{R}/pasha-depth-20260829-162441/results.tsv",
           f"{R}/pasha-depth-20260829-190835/results.tsv"]
@@ -84,7 +110,13 @@ VOCAB = 151936
 out["perplexity_reserve"] = [{"n_ctx": c, "gb": round(c * VOCAB * 4 / 1e9, 2)}
                              for c in (512, 8192, 16384, 32768, 65536, 131072, 262144)]
 out["host_ram_gb"] = 31
-out["card_vram_mib"] = 15888
+# Two different numbers, and the renderer needs the second one. NVML reports the physical
+# total; llama.cpp reports what it can actually use at init, and that is the figure a load
+# either fits inside or does not. Both are derived here, never retyped: an earlier version
+# emitted one key while the renderer read another, and three of the four figures died with a
+# KeyError for anyone running the documented path.
+out["card_vram_mib_physical"] = _nvml_total_mib()
+out["card_vram_mib_usable"] = _usable_from_engine_log()
 out["drafter_file_bytes"] = 631712480
 out["draft_n_ctx_train"] = 4096
 

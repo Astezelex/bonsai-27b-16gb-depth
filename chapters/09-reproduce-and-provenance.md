@@ -56,7 +56,14 @@ this work before it was written down.
   bugs that would each have produced a confident false finding about the fork.
 - **Parse against a real log, never against a remembered format.** `Final estimate: PPL =
   1.6671` is prefixed by a dotted timestamp, so a generic "first float on the line" extractor
-  returns `0.13`. Both extractors here were tested against the July logs before they were used.
+  returns `0.13`. A loose `VRAM: (\d+) MiB` matches `Total VRAM: 31777 MiB` and reports two
+  cards as one. Every extractor here was run against a kept log before it was used.
+- **When a data file and the code reading it disagree, never fix it in the data file.** After
+  any change to a generator and consumer pair, re-run the documented path into a scratch
+  directory and diff its output against the committed artefact. An earlier revision of this
+  repo hand-patched `figdata-part3.json` and the renderer while leaving the emitter alone. Every
+  figure looked correct, because the figure was correct. The published Quickstart produced one
+  figure and a `KeyError`. Looking at an output cannot see a broken input path.
 
 Two mechanical gates enforce the older rules that prose did not. `report_gate.py` refuses to
 print an accuracy figure without its cap rate and exits non-zero above 5%. `item_gate.py`

@@ -209,8 +209,8 @@
   }
  ],
  "host_ram_gb": 31,
- "drafter_file_bytes": 631712480,
- "draft_n_ctx_train": 4096,
  "card_vram_mib_physical": 16311,
- "card_vram_mib_usable": 15888
+ "card_vram_mib_usable": 15888,
+ "drafter_file_bytes": 631712480,
+ "draft_n_ctx_train": 4096
 }
