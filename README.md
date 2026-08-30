@@ -2,11 +2,18 @@
 
 **Long-context features on a 16 GB card, measured at the depth they are sold for.**
 
-A continuation of [16 GB bench-in-a-box](https://github.com/Astezelex/bonsai-27b-16gb-bench),
-which established independent quality anchors for PrismML Ternary Bonsai 27B against
-Qwen3.6-27B UD-IQ2_XXS on one RTX 5060 Ti. That part argued for reporting **score@budget**
-instead of score. This part re-runs those anchors on the rebased engine, then takes the three
-long-context features that shipped since and measures each one at the context it exists for.
+Part 3 of the bench-in-a-box series.
+
+| | |
+|---|---|
+| Part 1, the harness and the first independent numbers | [bonsai-27b-16gb-bench](https://github.com/Astezelex/bonsai-27b-16gb-bench) |
+| The model under test | [prism-ml/Ternary-Bonsai-27B-gguf](https://huggingface.co/prism-ml/Ternary-Bonsai-27B-gguf) |
+| The request that prompted this re-test | [PrismML-Eng/llama.cpp issue #85](https://github.com/PrismML-Eng/llama.cpp/issues/85) |
+
+[Part 1](https://github.com/Astezelex/bonsai-27b-16gb-bench) established independent quality anchors for PrismML Ternary Bonsai 27B against
+Qwen3.6-27B UD-IQ2_XXS on one RTX 5060 Ti, and argued for reporting **score@budget** instead of
+score. This part re-runs those anchors on the rebased engine, then takes the three long-context
+features that shipped since and measures each one at the context it exists for.
 
 Everything here was produced at the maintainers' request, after they asked for a re-test on the
 rebased `prism` branch and re-asked a question first put in July.
