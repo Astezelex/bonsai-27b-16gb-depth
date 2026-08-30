@@ -1,0 +1,52 @@
+0.07.974.455 I cmn          init: llama threadpool init, n_threads = 4
+0.08.199.754 I 
+0.08.199.890 I system_info: n_threads = 4 (n_threads_batch = 4) / 4 | CUDA : ARCHS = 500,610,700,750,800,860,890,900,1200 | USE_GRAPHS = 1 | BLACKWELL_NATIVE_FP4 = 1 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+0.09.018.147 I kl_divergence: computing over 4 chunks, n_ctx=8192, batch_size=2048, n_seq=1
+0.77 minutes
+
+chunk             PPL               ln(PPL(Q)/PPL(base))          KL Divergence              Δp RMS            Same top p
+0.20.573.336 I kl_divergence: 11.56 seconds per pass - ETA    1      11.4714 ±    0.5375      -0.00210 ±    0.00125       0.00234 ±    0.00010     1.165 ±  0.042 %    97.607 ±  0.239 %
+   2      10.9149 ±    0.3459      -0.00033 ±    0.00082       0.00200 ±    0.00006     1.098 ±  0.053 %    97.595 ±  0.169 %
+   3      12.1131 ±    0.3168      -0.00055 ±    0.00068       0.00236 ±    0.00012     1.115 ±  0.038 %    97.591 ±  0.138 %
+   4      11.3570 ±    0.2515      -0.00079 ±    0.00057       0.00215 ±    0.00009     1.061 ±  0.030 %    97.717 ±  0.117 %
+
+====== Perplexity statistics ======
+Mean PPL(Q)                   :  11.356971 ±   0.251537
+Mean PPL(base)                :  11.365917 ±   0.251874
+Cor(ln(PPL(Q)), ln(PPL(base))):  99.97%
+Mean ln(PPL(Q)/PPL(base))     :  -0.000787 ±   0.000566
+Mean PPL(Q)/PPL(base)         :   0.999213 ±   0.000566
+Mean PPL(Q)-PPL(base)         :  -0.008946 ±   0.006439
+
+====== KL divergence statistics ======
+Mean    KLD:   0.002145 ±   0.000088
+Maximum KLD:   1.105806
+99.9%   KLD:   0.066453
+99.0%   KLD:   0.016068
+95.0%   KLD:   0.006164
+90.0%   KLD:   0.004125
+Median  KLD:   0.001073
+10.0%   KLD:   0.000069
+ 5.0%   KLD:   0.000019
+ 1.0%   KLD:  -0.000006
+ 0.1%   KLD:  -0.000062
+Minimum KLD:  -0.000350
+
+====== Token probability statistics ======
+Mean    Δp: -0.019 ± 0.008 %
+Maximum Δp: 15.524%
+99.9%   Δp:  6.765%
+99.0%   Δp:  3.035%
+95.0%   Δp:  1.480%
+90.0%   Δp:  0.887%
+75.0%   Δp:  0.196%
+Median  Δp: -0.000%
+25.0%   Δp: -0.220%
+10.0%   Δp: -0.935%
+ 5.0%   Δp: -1.559%
+ 1.0%   Δp: -3.348%
+ 0.1%   Δp: -6.675%
+Minimum Δp: -29.023%
+RMS Δp    :  1.061 ± 0.030 %
+Same top p: 97.717 ± 0.117 %
+

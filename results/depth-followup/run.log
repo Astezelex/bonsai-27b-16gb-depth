@@ -1,0 +1,122 @@
+[2026-08-29T19:08:35+02:00] host reports 2 CUDA devices; this script pins CUDA_VISIBLE_DEVICES=1 (single card)
+[2026-08-29T19:08:35+02:00] ETA depth=16384: load 165s + prefill 16s + gen 40s = 221s/arm x 4 arms = 884s
+[2026-08-29T19:08:35+02:00] ETA depth=131072: load 165s + prefill 128s + gen 40s = 333s/arm x 4 arms = 1332s
+[2026-08-29T19:08:35+02:00] ETA TOTAL 41 min (2516s), budget 120 min
+[2026-08-29T19:08:35+02:00] n=1 proof present: n=1 proof PASSED 2026-08-29T14:55:38+02:00
+[2026-08-29T19:08:35+02:00] parking until card 1 drops below 1500 MiB used
+[2026-08-29T19:08:35+02:00] card 1 free (423 MiB). engine llama-prism-b10658-4725def. ternary Ternary-Bonsai-27B-Q2_g64.gguf
+[2026-08-29T19:08:35+02:00] ### sweep: depths [16384 131072] x {center off,on} x {draft off,on}, 3 reps, single card 1
+[2026-08-29T19:08:35+02:00] ### filler = natural (source /mnt/bigdisk/bonsai/kld-corpus/en-heldout.txt)
+[2026-08-29T19:08:35+02:00] --- depth=16384 ctx=20480 center=off draft=off
+78ae837f2e69265779b2a37c4f4328fa740dea49cb9888ef0854de578b7672ba
+[2026-08-29T19:08:46+02:00]     achieved depth 16488 tokens, 8159 MiB on card 1
+[2026-08-29T19:09:28+02:00]     rep1 decode 25.50133579237853 tok/s  ttft 235.013 ms  predicted 300
+[2026-08-29T19:09:40+02:00]     rep2 decode 25.499756856833447 tok/s  ttft 234.676 ms  predicted 300
+[2026-08-29T19:09:52+02:00]     rep3 decode 25.48688039390613 tok/s  ttft 234.259 ms  predicted 300
+[2026-08-29T19:09:56+02:00] --- depth=16384 ctx=20480 center=off draft=on
+11c3f3d19411e23ae54c7dd3211c682b01f283666a193afe17383a492131e874
+[2026-08-29T19:10:16+02:00]     achieved depth 16488 tokens, 11049 MiB on card 1
+[2026-08-29T19:10:55+02:00]     rep1 decode 35.89531006765005 tok/s  ttft 416.986 ms  predicted 300
+[2026-08-29T19:11:04+02:00]     rep2 decode 35.872851258201266 tok/s  ttft 414.843 ms  predicted 300
+[2026-08-29T19:11:13+02:00]     rep3 decode 35.834218202824076 tok/s  ttft 411.945 ms  predicted 300
+draft acceptance = 0.18090 (  125 accepted /   691 generated), mean len =  1.72
+draft acceptance = 0.18090 (  125 accepted /   691 generated), mean len =  1.72
+draft acceptance = 0.18090 (  125 accepted /   691 generated), mean len =  1.72
+[2026-08-29T19:11:17+02:00] --- depth=16384 ctx=20480 center=on draft=off
+d4d2cf73db9fdce97670e45488c0a29d5a39673c487aecdeb412521860acca06
+[2026-08-29T19:11:27+02:00]     achieved depth 16488 tokens, 8161 MiB on card 1
+[2026-08-29T19:12:09+02:00]     rep1 decode 25.47486555192404 tok/s  ttft 236.15 ms  predicted 300
+[2026-08-29T19:12:21+02:00]     rep2 decode 25.466449103129577 tok/s  ttft 235.921 ms  predicted 300
+[2026-08-29T19:12:33+02:00]     rep3 decode 25.47268659232788 tok/s  ttft 235.055 ms  predicted 300
+[2026-08-29T19:12:37+02:00] --- depth=16384 ctx=20480 center=on draft=on
+0eae80baa9cbaa24edf163dbaa603a79a16757a2c99d306976995961078ef1ac
+[2026-08-29T19:12:52+02:00]     achieved depth 16488 tokens, 11051 MiB on card 1
+[2026-08-29T19:13:31+02:00]     rep1 decode 35.05968471611153 tok/s  ttft 416.65 ms  predicted 300
+[2026-08-29T19:13:40+02:00]     rep2 decode 35.04296513646891 tok/s  ttft 416.169 ms  predicted 300
+[2026-08-29T19:13:49+02:00]     rep3 decode 35.0357710535397 tok/s  ttft 418.924 ms  predicted 300
+draft acceptance = 0.16783 (  120 accepted /   715 generated), mean len =  1.67
+draft acceptance = 0.16783 (  120 accepted /   715 generated), mean len =  1.67
+draft acceptance = 0.16783 (  120 accepted /   715 generated), mean len =  1.67
+[2026-08-29T19:13:54+02:00] --- depth=131072 ctx=135168 center=off draft=off
+9b28096248cda5d7f6f95ca584f6fc5f472200787a63dfe244d83e84d5b5d772
+[2026-08-29T19:14:05+02:00]     achieved depth 131050 tokens, 10735 MiB on card 1
+[2026-08-29T19:19:11+02:00]     rep1 decode 6.785568434897293 tok/s  ttft 296.874 ms  predicted 300
+[2026-08-29T19:19:56+02:00]     rep2 decode 6.784703873770924 tok/s  ttft 294.277 ms  predicted 300
+[2026-08-29T19:20:41+02:00]     rep3 decode 6.782810154089114 tok/s  ttft 296.95 ms  predicted 300
+[2026-08-29T19:20:45+02:00] --- depth=131072 ctx=135168 center=off draft=on
+cf4ece520001871dc6612d9a14b62f95b4f120e797fdf28bdb5e454e6efd06a8
+[2026-08-29T19:21:00+02:00]     achieved depth 131050 tokens, 14969 MiB on card 1
+[2026-08-29T19:26:04+02:00]     rep1 decode 10.175464830717871 tok/s  ttft 1667.416 ms  predicted 300
+[2026-08-29T19:26:35+02:00]     rep2 decode 10.180607033165115 tok/s  ttft 1667.157 ms  predicted 300
+[2026-08-29T19:27:07+02:00]     rep3 decode 10.17965178849843 tok/s  ttft 1666.236 ms  predicted 300
+draft acceptance = 0.00000 (    0 accepted /  1186 generated), mean len =  1.00
+draft acceptance = 0.00000 (    0 accepted /  1186 generated), mean len =  1.00
+draft acceptance = 0.00000 (    0 accepted /  1186 generated), mean len =  1.00
+[2026-08-29T19:27:11+02:00] --- depth=131072 ctx=135168 center=on draft=off
+d6be6bd106e8bd14f5414991141bf43b8b075e0814d848a34af842f0b6117545
+[2026-08-29T19:27:22+02:00]     achieved depth 131050 tokens, 10737 MiB on card 1
+[2026-08-29T19:32:28+02:00]     rep1 decode 6.785846095830399 tok/s  ttft 293.597 ms  predicted 300
+[2026-08-29T19:33:13+02:00]     rep2 decode 6.784692327250445 tok/s  ttft 293.625 ms  predicted 300
+[2026-08-29T19:33:58+02:00]     rep3 decode 6.784664923665826 tok/s  ttft 294.659 ms  predicted 300
+[2026-08-29T19:34:02+02:00] --- depth=131072 ctx=135168 center=on draft=on
+a8bd8e1e5b685a66063bfb4c6c811ac8c6c48f3c383a6eac8f93aeef5d33f18b
+[2026-08-29T19:34:18+02:00]     achieved depth 131050 tokens, 14971 MiB on card 1
+[2026-08-29T19:39:21+02:00]     rep1 decode 10.177920950981363 tok/s  ttft 1684.873 ms  predicted 300
+[2026-08-29T19:39:52+02:00]     rep2 decode 10.1811412303395 tok/s  ttft 1687.572 ms  predicted 300
+[2026-08-29T19:40:24+02:00]     rep3 decode 10.17738050972406 tok/s  ttft 1687.867 ms  predicted 300
+draft acceptance = 0.00000 (    0 accepted /  1186 generated), mean len =  1.00
+draft acceptance = 0.00000 (    0 accepted /  1186 generated), mean len =  1.00
+draft acceptance = 0.00000 (    0 accepted /  1186 generated), mean len =  1.00
+[2026-08-29T19:40:29+02:00] ### #5b: does a MISMATCHED bias get rejected at load
+[2026-08-29T19:40:29+02:00]   A. truncated bias: 30000 B of 66400 B
+43d4a414b2a2fe5a1d1ef5221c6b0cb300bf0ae67e36fd9052e87a18a75296f1
+[2026-08-29T19:40:38+02:00]   server died during load
+[2026-08-29T19:40:38+02:00]   A RESULT: load refused. Error text:
+0.03.083.580 E load_kv_mean_center: failed to load K-cache mean-centering bias file from /bias/bias-truncated.gguf
+0.03.084.673 E llama_init_from_model: failed to initialize the context: failed to load K-cache mean-centering bias file
+0.03.084.678 E cmn  common_init_: failed to create context with model '/models/Ternary-Bonsai-27B-Q2_g64.gguf'
+0.03.084.682 E cmn  common_init_: failed to create context with model '/models/Ternary-Bonsai-27B-Q2_g64.gguf'
+0.03.084.686 E srv    load_model: failed to create_context with model '/models/Ternary-Bonsai-27B-Q2_g64.gguf'
+0.03.084.997 E srv  llama_server: exiting due to model loading error
+[2026-08-29T19:40:42+02:00]   B. bias calibrated at -ctk q8_0, served at -ctk q4_0 (the mismatch he describes)
+0.04.110.970 I cmn          init: llama threadpool init, n_threads = 4
+0.04.112.344 I main: tokenizing the calibration text ...
+0.04.145.777 I main: collecting K-cache statistics over 30 chunk(s) of 512 tokens
+0.06.411.444 I main: processed chunk 1 / 30
+0.08.677.730 I main: processed chunk 2 / 30
+0.10.900.757 I main: processed chunk 3 / 30
+0.13.113.274 I main: processed chunk 4 / 30
+0.15.287.090 I main: processed chunk 5 / 30
+0.17.505.717 I main: processed chunk 6 / 30
+0.19.685.823 I main: processed chunk 7 / 30
+0.21.879.712 I main: processed chunk 8 / 30
+0.24.069.818 I main: processed chunk 9 / 30
+0.26.241.118 I main: processed chunk 10 / 30
+0.28.473.717 I main: processed chunk 11 / 30
+0.30.646.638 I main: processed chunk 12 / 30
+0.32.841.839 I main: processed chunk 13 / 30
+0.35.031.164 I main: processed chunk 14 / 30
+0.37.226.698 I main: processed chunk 15 / 30
+0.39.408.613 I main: processed chunk 16 / 30
+0.41.622.398 I main: processed chunk 17 / 30
+0.43.809.431 I main: processed chunk 18 / 30
+0.45.995.874 I main: processed chunk 19 / 30
+0.48.205.896 I main: processed chunk 20 / 30
+0.50.391.199 I main: processed chunk 21 / 30
+0.52.588.403 I main: processed chunk 22 / 30
+0.54.744.355 I main: processed chunk 23 / 30
+0.56.930.705 I main: processed chunk 24 / 30
+0.59.157.989 I main: processed chunk 25 / 30
+1.01.361.932 I main: processed chunk 26 / 30
+1.03.573.722 I main: processed chunk 27 / 30
+1.05.815.621 I main: processed chunk 28 / 30
+1.07.950.120 I main: processed chunk 29 / 30
+1.10.121.154 I main: processed chunk 30 / 30
+1.10.121.667 I main: wrote K-cache mean-centering bias for 16 layer(s) to /bad/bias-q8calib.gguf (measured with K rotation active)
+[2026-08-29T19:41:55+02:00]   calibrated a q8_0 bias: 66400 B
+52dd2b7a8ee0e1894df1348197ee6564905117d290482e3eb6a9284b50c05831
+[2026-08-29T19:42:05+02:00]   B RESULT: server STARTED with a q8_0-calibrated bias served at q4_0.
+[2026-08-29T19:42:05+02:00]      That CONTRADICTS the claim that a mismatched bias is rejected at load.
+[2026-08-29T19:42:09+02:00] === SWEEP COMPLETE ===
+[2026-08-29T19:42:09+02:00] tsv: /mnt/bigdisk/bonsai/pasha-depth-20260829-190835/results.tsv
+25 /mnt/bigdisk/bonsai/pasha-depth-20260829-190835/results.tsv

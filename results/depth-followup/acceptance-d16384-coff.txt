@@ -1,0 +1,3 @@
+draft acceptance = 0.18090 (  125 accepted /   691 generated), mean len =  1.72
+draft acceptance = 0.18090 (  125 accepted /   691 generated), mean len =  1.72
+draft acceptance = 0.18090 (  125 accepted /   691 generated), mean len =  1.72

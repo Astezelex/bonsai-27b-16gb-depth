@@ -1,0 +1,118 @@
+{
+    "name": "qwen-iq2xxs@live_code_bench",
+    "dataset_name": "live_code_bench",
+    "dataset_pretty_name": "Live-Code-Bench",
+    "dataset_description": "\n## Overview\n\nLiveCodeBench is a contamination-free benchmark for evaluating code generation models on real-world competitive programming problems. It continuously collects new problems from coding platforms to ensure models haven't seen the test data during training.\n\n## Task Description\n\n- **Task Type**: Competitive Programming / Code Generation\n- **Input**: Programming problem description with input/output format\n- **Output**: Complete solution code\n- **Source**: Problems from LeetCode, Codeforces, and AtCoder\n\n## Key Features\n\n- Continuously updated with new problems post model training cutoff\n- Problems from major competitive programming platforms\n- Multiple test cases per problem for thorough evaluation\n- Date-based filtering to control for data contamination\n- Supports both local and sandbox code execution\n\n## Evaluation Notes\n\n- Default configuration uses **0-shot** evaluation\n- **Security Warning**: By default, code is executed in the local environment. We recommend using sandbox execution. See the [sandbox documentation](https://evalscope.readthedocs.io/en/latest/user_guides/sandbox.html) for details.\n- Use `start_date` and `end_date` parameters to filter problems by date\n- Default timeout is 6 seconds per test case\n- Supports `pass@k` metric calculation\n",
+    "model_name": "qwen-iq2xxs",
+    "score": 0.24,
+    "metrics": [
+        {
+            "name": "mean_acc",
+            "num": 50,
+            "score": 0.24,
+            "macro_score": 0.24,
+            "categories": [
+                {
+                    "name": [
+                        "default"
+                    ],
+                    "num": 50,
+                    "score": 0.24,
+                    "macro_score": 0.24,
+                    "subsets": [
+                        {
+                            "name": "release_latest",
+                            "score": 0.24,
+                            "num": 50,
+                            "is_aggregate": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "mean_acc_pass@1",
+            "num": 50,
+            "score": 0.24,
+            "macro_score": 0.24,
+            "categories": [
+                {
+                    "name": [
+                        "default"
+                    ],
+                    "num": 50,
+                    "score": 0.24,
+                    "macro_score": 0.24,
+                    "subsets": [
+                        {
+                            "name": "release_latest",
+                            "score": 0.24,
+                            "num": 50,
+                            "is_aggregate": false
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "analysis": "N/A",
+    "perf_metrics": {
+        "summary": {
+            "n_samples": 50,
+            "latency": {
+                "mean": 461.149365,
+                "std": 135.827783,
+                "min": 68.964143,
+                "25%": 492.086427,
+                "50%": 530.536017,
+                "75%": 532.239932,
+                "90%": 532.862522,
+                "99%": 533.512994,
+                "max": 533.515244
+            },
+            "throughput": {
+                "avg_output_tps": 26.48,
+                "avg_req_ps": 0.0022
+            },
+            "usage": {
+                "input_tokens": {
+                    "mean": 505.98,
+                    "std": 149.687905,
+                    "min": 244.0,
+                    "25%": 390.0,
+                    "50%": 485.5,
+                    "75%": 599.25,
+                    "90%": 728.8,
+                    "99%": 845.65,
+                    "max": 902.0
+                },
+                "output_tokens": {
+                    "mean": 12210.56,
+                    "std": 3572.319575,
+                    "min": 1855.0,
+                    "25%": 14000.0,
+                    "50%": 14000.0,
+                    "75%": 14000.0,
+                    "90%": 14000.0,
+                    "99%": 14000.0,
+                    "max": 14000.0
+                },
+                "total_tokens": {
+                    "mean": 12716.54,
+                    "std": 3603.58204,
+                    "min": 2099.0,
+                    "25%": 14295.25,
+                    "50%": 14417.0,
+                    "75%": 14566.0,
+                    "90%": 14728.8,
+                    "99%": 14845.65,
+                    "max": 14902.0
+                },
+                "total_input_tokens": 25299,
+                "total_output_tokens": 610528,
+                "total_tokens_count": 635827
+            }
+        }
+    },
+    "num": 50
+}

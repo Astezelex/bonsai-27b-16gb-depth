@@ -1,0 +1,50 @@
+2.10.619.238 I cmn          init: llama threadpool init, n_threads = 4
+2.10.739.784 I 
+2.10.739.889 I system_info: n_threads = 4 (n_threads_batch = 4) / 4 | CUDA : ARCHS = 500,610,700,750,800,860,890,900,1200 | USE_GRAPHS = 1 | BLACKWELL_NATIVE_FP4 = 1 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+2.12.436.255 I kl_divergence: computing over 2 chunks, n_ctx=16384, batch_size=2048, n_seq=1
+2.35.972.781 I kl_divergence: 23.54 seconds per pass - ETA 0.78 minutes
+
+chunk             PPL               ln(PPL(Q)/PPL(base))          KL Divergence              Δp RMS            Same top p
+   1      10.9179 ±    0.3448      -0.00074 ±    0.00080       0.00220 ±    0.00008     1.076 ±  0.026 %    97.766 ±  0.163 %
+   2      12.3270 ±    0.2853       0.00008 ±    0.00060       0.00231 ±    0.00006     1.062 ±  0.018 %    97.748 ±  0.116 %
+
+====== Perplexity statistics ======
+Mean PPL(Q)                   :  12.327024 ±   0.285307
+Mean PPL(base)                :  12.326022 ±   0.285501
+Cor(ln(PPL(Q)), ln(PPL(base))):  99.97%
+Mean ln(PPL(Q)/PPL(base))     :   0.000081 ±   0.000599
+Mean PPL(Q)/PPL(base)         :   1.000081 ±   0.000599
+Mean PPL(Q)-PPL(base)         :   0.001002 ±   0.007385
+
+====== KL divergence statistics ======
+Mean    KLD:   0.002312 ±   0.000055
+Maximum KLD:   0.383337
+99.9%   KLD:   0.086974
+99.0%   KLD:   0.017279
+95.0%   KLD:   0.007084
+90.0%   KLD:   0.004673
+Median  KLD:   0.001172
+10.0%   KLD:   0.000057
+ 5.0%   KLD:   0.000014
+ 1.0%   KLD:  -0.000009
+ 0.1%   KLD:  -0.000072
+Minimum KLD:  -0.000246
+
+====== Token probability statistics ======
+Mean    Δp: -0.027 ± 0.008 %
+Maximum Δp: 13.854%
+99.9%   Δp:  7.354%
+99.0%   Δp:  3.047%
+95.0%   Δp:  1.492%
+90.0%   Δp:  0.897%
+75.0%   Δp:  0.176%
+Median  Δp: -0.000%
+25.0%   Δp: -0.223%
+10.0%   Δp: -0.937%
+ 5.0%   Δp: -1.625%
+ 1.0%   Δp: -3.518%
+ 0.1%   Δp: -6.185%
+Minimum Δp: -11.382%
+RMS Δp    :  1.062 ± 0.018 %
+Same top p: 97.748 ± 0.116 %
+

@@ -1,0 +1,216 @@
+{
+ "depth_sweep": [
+  {
+   "depth_target": 0,
+   "depth_actual": 0,
+   "nodraft_tps": 42.106,
+   "draft_tps": 77.883,
+   "nodraft_vram": 7893,
+   "draft_vram": 10629,
+   "draft_load_failed": false,
+   "acceptance": {
+    "acceptance": 0.59155,
+    "accepted": 210,
+    "generated": 355,
+    "mean_len": 3.36
+   },
+   "center_nodraft_tps": 42.102,
+   "center_nodraft_vram": 7895,
+   "center_draft_tps": 78.062
+  },
+  {
+   "depth_target": 8192,
+   "depth_actual": 8208,
+   "nodraft_tps": 32.024,
+   "draft_tps": 65.379,
+   "nodraft_vram": 7975,
+   "draft_vram": 10769,
+   "draft_load_failed": false,
+   "acceptance": {
+    "acceptance": 0.495,
+    "accepted": 198,
+    "generated": 400,
+    "mean_len": 2.98
+   },
+   "center_nodraft_tps": 31.947,
+   "center_nodraft_vram": 7977,
+   "center_draft_tps": 64.608
+  },
+  {
+   "depth_target": 16384,
+   "depth_actual": 16488,
+   "nodraft_tps": 25.5,
+   "draft_tps": 35.873,
+   "nodraft_vram": 8159,
+   "draft_vram": 11049,
+   "draft_load_failed": false,
+   "acceptance": {
+    "acceptance": 0.1809,
+    "accepted": 125,
+    "generated": 691,
+    "mean_len": 1.72
+   },
+   "center_nodraft_tps": 25.473,
+   "center_nodraft_vram": 8161,
+   "center_draft_tps": 35.043
+  },
+  {
+   "depth_target": 32768,
+   "depth_actual": 32918,
+   "nodraft_tps": 18.247,
+   "draft_tps": 18.32,
+   "nodraft_vram": 8527,
+   "draft_vram": 11609,
+   "draft_load_failed": false,
+   "acceptance": {
+    "acceptance": 0.00085,
+    "accepted": 1,
+    "generated": 1182,
+    "mean_len": 1.0
+   },
+   "center_nodraft_tps": 18.22,
+   "center_nodraft_vram": 8529,
+   "center_draft_tps": 18.363
+  },
+  {
+   "depth_target": 131072,
+   "depth_actual": 131050,
+   "nodraft_tps": 6.781,
+   "draft_tps": 10.18,
+   "nodraft_vram": 10735,
+   "draft_vram": 14969,
+   "draft_load_failed": false,
+   "acceptance": {
+    "acceptance": 0.0,
+    "accepted": 0,
+    "generated": 1186,
+    "mean_len": 1.0
+   },
+   "center_nodraft_tps": 6.785,
+   "center_nodraft_vram": 10737,
+   "center_draft_tps": 10.174
+  },
+  {
+   "depth_target": 262144,
+   "depth_actual": 261329,
+   "nodraft_tps": 3.692,
+   "draft_tps": null,
+   "nodraft_vram": 13679,
+   "draft_vram": null,
+   "draft_load_failed": true,
+   "acceptance": null,
+   "center_nodraft_tps": 3.703,
+   "center_nodraft_vram": 13681,
+   "center_draft_tps": null
+  }
+ ],
+ "workload_acceptance": [
+  {
+   "acceptance": 0.30594,
+   "accepted": 18727,
+   "generated": 61212,
+   "mean_len": 2.22
+  },
+  {
+   "acceptance": 0.30706,
+   "accepted": 18416,
+   "generated": 59976,
+   "mean_len": 2.23
+  },
+  {
+   "acceptance": 0.18183,
+   "accepted": 22426,
+   "generated": 123332,
+   "mean_len": 1.73
+  },
+  {
+   "acceptance": 0.27204,
+   "accepted": 19538,
+   "generated": 71820,
+   "mean_len": 2.09
+  },
+  {
+   "acceptance": 0.21138,
+   "accepted": 27487,
+   "generated": 130039,
+   "mean_len": 1.85
+  }
+ ],
+ "kld_ladder": [
+  {
+   "n_ctx": 512,
+   "corpus": "orig",
+   "v_cache": "f16",
+   "uncentered": 0.000646,
+   "centered": 0.000487,
+   "delta_pct": -24.61
+  },
+  {
+   "n_ctx": 512,
+   "corpus": "orig",
+   "v_cache": "q4_0",
+   "uncentered": 0.001019,
+   "centered": 0.000945,
+   "delta_pct": -7.26
+  },
+  {
+   "n_ctx": 512,
+   "corpus": "wiki",
+   "v_cache": "q4_0",
+   "uncentered": 0.00136,
+   "centered": 0.001231,
+   "delta_pct": -9.49
+  },
+  {
+   "n_ctx": 8192,
+   "corpus": "wiki",
+   "v_cache": "q4_0",
+   "uncentered": 0.002145,
+   "centered": 0.00213,
+   "delta_pct": -0.7
+  },
+  {
+   "n_ctx": 16384,
+   "corpus": "wiki",
+   "v_cache": "q4_0",
+   "uncentered": 0.002312,
+   "centered": 0.002329,
+   "delta_pct": 0.74
+  }
+ ],
+ "perplexity_reserve": [
+  {
+   "n_ctx": 512,
+   "gb": 0.31
+  },
+  {
+   "n_ctx": 8192,
+   "gb": 4.98
+  },
+  {
+   "n_ctx": 16384,
+   "gb": 9.96
+  },
+  {
+   "n_ctx": 32768,
+   "gb": 19.91
+  },
+  {
+   "n_ctx": 65536,
+   "gb": 39.83
+  },
+  {
+   "n_ctx": 131072,
+   "gb": 79.66
+  },
+  {
+   "n_ctx": 262144,
+   "gb": 159.32
+  }
+ ],
+ "host_ram_gb": 31,
+ "drafter_file_bytes": 631712480,
+ "draft_n_ctx_train": 4096,
+ "card_vram_mib_physical": 16311,
+ "card_vram_mib_usable": 15888
+}

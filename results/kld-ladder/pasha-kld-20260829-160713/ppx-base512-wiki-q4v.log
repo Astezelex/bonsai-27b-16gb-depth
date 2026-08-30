@@ -1,0 +1,11 @@
+0.04.232.609 I cmn          init: llama threadpool init, n_threads = 4
+0.04.361.307 I 
+0.04.361.418 I system_info: n_threads = 4 (n_threads_batch = 4) / 4 | CUDA : ARCHS = 500,610,700,750,800,860,890,900,1200 | USE_GRAPHS = 1 | BLACKWELL_NATIVE_FP4 = 1 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+0.04.361.499 I perplexity: saving all logits to /kld/b512wiki.kld
+0.04.361.504 I perplexity: tokenizing the input ..
+0.09.309.691 I perplexity: tokenization took 4948.18 ms
+0.09.310.563 I perplexity: calculating perplexity over 12 chunks, n_ctx=512, batch_size=2048, n_seq=4
+0.11.971.011 I perplexity: 2.56 seconds per pass - ETA 0.12 minutes
+[1]7.6898,[2]7.9753,[3]8.4832,[4]8.8028,[5]8.5279,[6]8.6917,[7]8.7173,[8]9.0881,[9]9.3380,[10]9.4120,[11]9.0124,[12]9.1416,
+0.18.982.194 I Final estimate: PPL = 9.1416 +/- 0.42917
+

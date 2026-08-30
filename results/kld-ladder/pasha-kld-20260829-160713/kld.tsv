@@ -1,0 +1,16 @@
+stage	ctx	chunks	tokens	corpus	arm	metric	value	wall_s
+control	512	12	6144	orig	uncentered	mean_kld	0.000646	74
+control	512	12	6144	orig	centered	mean_kld	0.000487	74
+control	512	12	6144	orig	delta	pct_change	-24.6	74
+isolate	512	12	6144	orig	uncentered	mean_kld	0.001019	73
+isolate	512	12	6144	orig	centered	mean_kld	0.000945	73
+isolate	512	12	6144	orig	delta	pct_change	-7.3	73
+isolate	512	12	6144	wiki	uncentered	mean_kld	0.001360	85
+isolate	512	12	6144	wiki	centered	mean_kld	0.001231	85
+isolate	512	12	6144	wiki	delta	pct_change	-9.5	85
+ladder	8192	4	32768	wiki	uncentered	mean_kld	0.002145	437
+ladder	8192	4	32768	wiki	centered	mean_kld	0.002130	437
+ladder	8192	4	32768	wiki	delta	pct_change	-0.7	437
+ladder	32768	2	65536	wiki	f16_base	fit	FAILED	0
+target	262144	2	524288	wiki	uncentered	ppl	PARSE_FAIL	213
+target	262144	2	524288	wiki	centered	ppl	PARSE_FAIL	213

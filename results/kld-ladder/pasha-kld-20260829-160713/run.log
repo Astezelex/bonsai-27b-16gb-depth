@@ -1,0 +1,68 @@
+[2026-08-29T16:07:13+02:00] ### STAGE 0  n_ctx=512 on the ORIGINAL corpus, V left at f16 exactly as July ran it.
+[2026-08-29T16:07:13+02:00]   target, read from rerun-2026-08/logs/p1_kld.log: uncentered 0.000646, centered 0.000487, -24.6%
+[2026-08-29T16:07:13+02:00]   RUN base512orig
+  exit=0  log=/mnt/bigdisk/bonsai/pasha-kld-20260829-160713/ppx-base512orig.log  (11 lines)
+[2026-08-29T16:07:52+02:00]   RUN unc512orig
+  exit=0  log=/mnt/bigdisk/bonsai/pasha-kld-20260829-160713/ppx-unc512orig.log  (62 lines)
+[2026-08-29T16:08:10+02:00]   RUN cen512orig
+  exit=0  log=/mnt/bigdisk/bonsai/pasha-kld-20260829-160713/ppx-cen512orig.log  (62 lines)
+[2026-08-29T16:08:27+02:00]   uncentered mean KLD = 0.000646 ; centered = 0.000487 ; wall 74s
+[2026-08-29T16:08:27+02:00]   control delta = -24.6% (published: -24.6%)
+[2026-08-29T16:08:27+02:00]   CONTROL PASSED. Per-token rate: 83.0 tok/s across 3 arms.
+[2026-08-29T16:08:27+02:00] ### STAGE 0b  isolate the V-type change and the corpus change, both at ctx 512
+[2026-08-29T16:08:27+02:00]   RUN base512-orig-q4v
+  exit=0  log=/mnt/bigdisk/bonsai/pasha-kld-20260829-160713/ppx-base512-orig-q4v.log  (11 lines)
+[2026-08-29T16:09:06+02:00]   RUN unc512-orig-q4v
+  exit=0  log=/mnt/bigdisk/bonsai/pasha-kld-20260829-160713/ppx-unc512-orig-q4v.log  (60 lines)
+[2026-08-29T16:09:23+02:00]   RUN cen512-orig-q4v
+  exit=0  log=/mnt/bigdisk/bonsai/pasha-kld-20260829-160713/ppx-cen512-orig-q4v.log  (60 lines)
+[2026-08-29T16:09:40+02:00]   512 orig q4_0-V: uncentered 0.001019  centered 0.000945  delta -7.3%
+[2026-08-29T16:09:40+02:00]   RUN base512-wiki-q4v
+  exit=0  log=/mnt/bigdisk/bonsai/pasha-kld-20260829-160713/ppx-base512-wiki-q4v.log  (11 lines)
+[2026-08-29T16:10:31+02:00]   RUN unc512-wiki-q4v
+  exit=0  log=/mnt/bigdisk/bonsai/pasha-kld-20260829-160713/ppx-unc512-wiki-q4v.log  (60 lines)
+[2026-08-29T16:10:48+02:00]   RUN cen512-wiki-q4v
+  exit=0  log=/mnt/bigdisk/bonsai/pasha-kld-20260829-160713/ppx-cen512-wiki-q4v.log  (60 lines)
+[2026-08-29T16:11:05+02:00]   512 wiki q4_0-V: uncentered 0.001360  centered 0.001231  delta -9.5%
+[2026-08-29T16:11:05+02:00] ### ETA and disk gate for the ladder [8192:4 32768:2] on the Wikipedia corpus
+[2026-08-29T16:11:05+02:00]   ctx=8192 chunks=4 tokens=32768  base .kld ~8.1 GB  ~19 min for 3 arms
+[2026-08-29T16:11:05+02:00]   ctx=32768 chunks=2 tokens=65536  base .kld ~16.2 GB  ~39 min for 3 arms
+[2026-08-29T16:11:05+02:00]   total .kld need ~29 GB, free on /mnt/bigdisk/bonsai/kldbase = 590 GB
+[2026-08-29T16:11:05+02:00]   ladder ETA 59 min, budget 240 min
+[2026-08-29T16:11:05+02:00] ### LADDER ctx=8192 chunks=4 tokens=32768 (Wikipedia held-out, CC BY-SA)
+[2026-08-29T16:11:05+02:00]   RUN base8192
+  exit=0  log=/mnt/bigdisk/bonsai/pasha-kld-20260829-160713/ppx-base8192.log  (11 lines)
+[2026-08-29T16:13:38+02:00]   RUN unc8192
+  exit=0  log=/mnt/bigdisk/bonsai/pasha-kld-20260829-160713/ppx-unc8192.log  (52 lines)
+[2026-08-29T16:16:40+02:00]   RUN cen8192
+  exit=0  log=/mnt/bigdisk/bonsai/pasha-kld-20260829-160713/ppx-cen8192.log  (52 lines)
+[2026-08-29T16:18:22+02:00]   ctx=8192  uncentered 0.002145  centered 0.002130  delta -0.7%  wall 437s
+[2026-08-29T16:18:22+02:00]   freed /mnt/bigdisk/bonsai/kldbase/base-8192.kld
+[2026-08-29T16:18:22+02:00] ### LADDER ctx=32768 chunks=2 tokens=65536 (Wikipedia held-out, CC BY-SA)
+[2026-08-29T16:18:22+02:00]   RUN base32768
+  exit=137  log=/mnt/bigdisk/bonsai/pasha-kld-20260829-160713/ppx-base32768.log  (7 lines)
+[2026-08-29T16:20:23+02:00]   F16 REFERENCE FAILED TO LOAD OR RUN at ctx=32768. That is the ladder's ceiling.
+[2026-08-29T16:20:23+02:00] ### STAGE 2  raw perplexity at n_ctx=262144, centered against uncentered, one card
+[2026-08-29T16:20:23+02:00]   no F16 reference: the KLD instrument cannot reach this context on 16 GB (measured)
+[2026-08-29T16:20:23+02:00]   RUN ppl262-unc
+  exit=139  log=/mnt/bigdisk/bonsai/pasha-kld-20260829-160713/ppx-ppl262-unc.log  (20 lines)
+[2026-08-29T16:23:31+02:00]   RUN ppl262-cen
+  exit=139  log=/mnt/bigdisk/bonsai/pasha-kld-20260829-160713/ppx-ppl262-cen.log  (20 lines)
+[2026-08-29T16:23:56+02:00]   ctx=262144  uncentered PPL PARSE_FAIL  centered PPL PARSE_FAIL  wall 213s
+[2026-08-29T16:23:56+02:00] === KLD LADDER COMPLETE ===
+stage    ctx     chunks  tokens  corpus  arm         metric      value       wall_s
+control  512     12      6144    orig    uncentered  mean_kld    0.000646    74
+control  512     12      6144    orig    centered    mean_kld    0.000487    74
+control  512     12      6144    orig    delta       pct_change  -24.6       74
+isolate  512     12      6144    orig    uncentered  mean_kld    0.001019    73
+isolate  512     12      6144    orig    centered    mean_kld    0.000945    73
+isolate  512     12      6144    orig    delta       pct_change  -7.3        73
+isolate  512     12      6144    wiki    uncentered  mean_kld    0.001360    85
+isolate  512     12      6144    wiki    centered    mean_kld    0.001231    85
+isolate  512     12      6144    wiki    delta       pct_change  -9.5        85
+ladder   8192    4       32768   wiki    uncentered  mean_kld    0.002145    437
+ladder   8192    4       32768   wiki    centered    mean_kld    0.002130    437
+ladder   8192    4       32768   wiki    delta       pct_change  -0.7        437
+ladder   32768   2       65536   wiki    f16_base    fit         FAILED      0
+target   262144  2       524288  wiki    uncentered  ppl         PARSE_FAIL  213
+target   262144  2       524288  wiki    centered    ppl         PARSE_FAIL  213

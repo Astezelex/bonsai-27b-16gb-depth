@@ -1,0 +1,430 @@
+{
+    "name": "qwen-iq2xxs@mmlu_redux",
+    "dataset_name": "mmlu_redux",
+    "dataset_pretty_name": "MMLU-Redux",
+    "dataset_description": "\n## Overview\n\nMMLU-Redux is an improved version of the MMLU benchmark with corrected answers. It addresses known errors in the original MMLU dataset by fixing incorrect ground truth labels, missing correct options, and ambiguous questions.\n\n## Task Description\n\n- **Task Type**: Multiple-Choice Knowledge Assessment\n- **Input**: Question with four answer choices\n- **Output**: Correct answer letter (A/B/C/D)\n- **Domains**: 57 subjects across STEM, Humanities, Social Sciences, and Other\n\n## Key Features\n\n- Corrects errors in original MMLU benchmark\n- Error types fixed include:\n  - `no_correct_answer`: Questions with missing correct options\n  - `wrong_groundtruth`: Questions with incorrect ground truth\n  - `multiple_correct_answers`: Questions with ambiguous answers\n- Same 57-subject coverage as original MMLU\n- Maintains compatibility with MMLU evaluation frameworks\n\n## Evaluation Notes\n\n- Default evaluation uses the **test** split\n- Primary metric: **Accuracy** (with inclusion flag for multi-answer questions)\n- Uses Chain-of-Thought (CoT) prompting\n- Zero-shot evaluation only (few-shot not supported)\n- Results aggregated by subject and category (STEM, Humanities, Social Science, Other)\n",
+    "model_name": "qwen-iq2xxs",
+    "score": 0.8509,
+    "metrics": [
+        {
+            "name": "mean_acc",
+            "num": 342,
+            "score": 0.8509,
+            "macro_score": 0.8509,
+            "categories": [
+                {
+                    "name": [
+                        "default"
+                    ],
+                    "num": 342,
+                    "score": 0.8509,
+                    "macro_score": 0.8509,
+                    "subsets": [
+                        {
+                            "name": "abstract_algebra",
+                            "score": 0.8333,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "anatomy",
+                            "score": 0.6667,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "astronomy",
+                            "score": 1.0,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "business_ethics",
+                            "score": 0.5,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "clinical_knowledge",
+                            "score": 1.0,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "college_biology",
+                            "score": 1.0,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "college_chemistry",
+                            "score": 0.8333,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "college_computer_science",
+                            "score": 0.6667,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "college_mathematics",
+                            "score": 0.8333,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "college_medicine",
+                            "score": 0.5,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "college_physics",
+                            "score": 0.8333,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "computer_security",
+                            "score": 0.8333,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "conceptual_physics",
+                            "score": 1.0,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "econometrics",
+                            "score": 0.6667,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "electrical_engineering",
+                            "score": 0.5,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "elementary_mathematics",
+                            "score": 1.0,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "formal_logic",
+                            "score": 1.0,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "global_facts",
+                            "score": 0.6667,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "high_school_biology",
+                            "score": 0.8333,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "high_school_chemistry",
+                            "score": 0.8333,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "high_school_computer_science",
+                            "score": 1.0,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "high_school_european_history",
+                            "score": 1.0,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "high_school_geography",
+                            "score": 1.0,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "high_school_government_and_politics",
+                            "score": 0.8333,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "high_school_macroeconomics",
+                            "score": 1.0,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "high_school_mathematics",
+                            "score": 0.6667,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "high_school_microeconomics",
+                            "score": 1.0,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "high_school_physics",
+                            "score": 0.8333,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "high_school_psychology",
+                            "score": 1.0,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "high_school_statistics",
+                            "score": 0.8333,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "high_school_us_history",
+                            "score": 0.8333,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "high_school_world_history",
+                            "score": 0.8333,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "human_aging",
+                            "score": 0.5,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "human_sexuality",
+                            "score": 0.6667,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "international_law",
+                            "score": 1.0,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "jurisprudence",
+                            "score": 1.0,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "logical_fallacies",
+                            "score": 1.0,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "machine_learning",
+                            "score": 1.0,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "management",
+                            "score": 0.8333,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "marketing",
+                            "score": 1.0,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "medical_genetics",
+                            "score": 1.0,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "miscellaneous",
+                            "score": 1.0,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "moral_disputes",
+                            "score": 0.8333,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "moral_scenarios",
+                            "score": 0.6667,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "nutrition",
+                            "score": 1.0,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "philosophy",
+                            "score": 1.0,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "prehistory",
+                            "score": 0.5,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "professional_accounting",
+                            "score": 1.0,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "professional_law",
+                            "score": 0.6667,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "professional_medicine",
+                            "score": 1.0,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "professional_psychology",
+                            "score": 0.8333,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "public_relations",
+                            "score": 0.8333,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "security_studies",
+                            "score": 0.8333,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "sociology",
+                            "score": 0.8333,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "us_foreign_policy",
+                            "score": 0.6667,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "virology",
+                            "score": 1.0,
+                            "num": 6,
+                            "is_aggregate": false
+                        },
+                        {
+                            "name": "world_religions",
+                            "score": 1.0,
+                            "num": 6,
+                            "is_aggregate": false
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "analysis": "N/A",
+    "perf_metrics": {
+        "summary": {
+            "n_samples": 342,
+            "latency": {
+                "mean": 83.552108,
+                "std": 69.911534,
+                "min": 9.381376,
+                "25%": 39.286757,
+                "50%": 61.368989,
+                "75%": 92.707632,
+                "90%": 179.164317,
+                "99%": 297.384654,
+                "max": 303.789964
+            },
+            "throughput": {
+                "avg_output_tps": 26.95,
+                "avg_req_ps": 0.012
+            },
+            "usage": {
+                "input_tokens": {
+                    "mean": 157.312865,
+                    "std": 91.879551,
+                    "min": 85.0,
+                    "25%": 112.0,
+                    "50%": 129.0,
+                    "75%": 162.75,
+                    "90%": 230.3,
+                    "99%": 487.01,
+                    "max": 1057.0
+                },
+                "output_tokens": {
+                    "mean": 2251.380117,
+                    "std": 1894.022578,
+                    "min": 236.0,
+                    "25%": 1047.25,
+                    "50%": 1659.0,
+                    "75%": 2518.75,
+                    "90%": 4883.9,
+                    "99%": 8000.0,
+                    "max": 8000.0
+                },
+                "total_tokens": {
+                    "mean": 2408.692982,
+                    "std": 1901.373096,
+                    "min": 332.0,
+                    "25%": 1182.75,
+                    "50%": 1807.5,
+                    "75%": 2664.5,
+                    "90%": 4995.2,
+                    "99%": 8190.0,
+                    "max": 8224.0
+                },
+                "total_input_tokens": 53801,
+                "total_output_tokens": 769972,
+                "total_tokens_count": 823773
+            }
+        }
+    },
+    "num": 342
+}

@@ -1,0 +1,20 @@
+0.04.282.691 I cmn          init: llama threadpool init, n_threads = 4
+0.04.414.537 I 
+0.04.414.651 I system_info: n_threads = 4 (n_threads_batch = 4) / 4 | CUDA : ARCHS = 500,610,700,750,800,860,890,900,1200 | USE_GRAPHS = 1 | BLACKWELL_NATIVE_FP4 = 1 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+0.04.414.666 I perplexity: tokenizing the input ..
+0.09.336.284 I perplexity: tokenization took 4921.61 ms
+/prism/libggml-base.so.0(+0x1c89b)[0x75ef652ec89b]
+/prism/libggml-base.so.0(ggml_print_backtrace+0x21f)[0x75ef652ecd1f]
+/prism/libggml-base.so.0(+0x3217f)[0x75ef6530217f]
+/usr/lib/x86_64-linux-gnu/libstdc++.so.6(+0xbb0da)[0x75ef6483d0da]
+/usr/lib/x86_64-linux-gnu/libstdc++.so.6(_ZSt10unexpectedv+0x0)[0x75ef64827a55]
+/usr/lib/x86_64-linux-gnu/libstdc++.so.6(+0xbb391)[0x75ef6483d391]
+/usr/lib/x86_64-linux-gnu/libstdc++.so.6(+0xa5ac8)[0x75ef64827ac8]
+/prism/libllama-perplexity-impl.so(_ZNSt6vectorIfSaIfEE7reserveEm+0x4b)[0x75ef655d60cb]
+/prism/libllama-perplexity-impl.so(+0xa5c2)[0x75ef655c55c2]
+/prism/libllama-perplexity-impl.so(_Z16llama_perplexityiPPc+0x70d)[0x75ef655d1dbd]
+/usr/lib/x86_64-linux-gnu/libc.so.6(+0x2a1ca)[0x75ef653cb1ca]
+/usr/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x8b)[0x75ef653cb28b]
+/prism/llama-perplexity(+0x1095)[0x56e89abb6095]
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc

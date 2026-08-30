@@ -1,0 +1,94 @@
+{
+    "name": "bonsai@aime26",
+    "dataset_name": "aime26",
+    "dataset_pretty_name": "AIME-2026",
+    "dataset_description": "\n## Overview\n\nAIME 2026 (American Invitational Mathematics Examination 2026) is a benchmark based on problems from the prestigious AIME competition, one of the most challenging high school mathematics contests in the United States. It tests advanced mathematical reasoning and problem-solving skills.\n\n## Task Description\n\n- **Task Type**: Competition Mathematics Problem Solving\n- **Input**: AIME-level mathematical problem\n- **Output**: Integer answer (0-999) with step-by-step reasoning\n- **Difficulty**: Advanced high school / early undergraduate level\n\n## Key Features\n\n- Problems from AIME I and AIME II 2026 competitions\n- Answers are always integers between 0 and 999\n- Requires creative mathematical reasoning and problem-solving\n- Topics: algebra, geometry, number theory, combinatorics, probability\n- Represents top-tier high school mathematics competition difficulty\n\n## Evaluation Notes\n\n- Default configuration uses **0-shot** evaluation\n- Answers should be formatted within `\\boxed{}` for proper extraction\n- Uses LLM-as-judge for mathematical equivalence checking\n",
+    "model_name": "bonsai",
+    "score": 0.9,
+    "metrics": [
+        {
+            "name": "mean_acc",
+            "num": 30,
+            "score": 0.9,
+            "macro_score": 0.9,
+            "categories": [
+                {
+                    "name": [
+                        "default"
+                    ],
+                    "num": 30,
+                    "score": 0.9,
+                    "macro_score": 0.9,
+                    "subsets": [
+                        {
+                            "name": "default",
+                            "score": 0.9,
+                            "num": 30,
+                            "is_aggregate": false
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "analysis": "N/A",
+    "perf_metrics": {
+        "summary": {
+            "n_samples": 30,
+            "latency": {
+                "mean": 883.882201,
+                "std": 377.905654,
+                "min": 309.150618,
+                "25%": 633.978875,
+                "50%": 736.157789,
+                "75%": 1109.1122,
+                "90%": 1430.45803,
+                "99%": 1642.791652,
+                "max": 1643.162637
+            },
+            "throughput": {
+                "avg_output_tps": 38.8,
+                "avg_req_ps": 0.0011
+            },
+            "usage": {
+                "input_tokens": {
+                    "mean": 163.433333,
+                    "std": 67.712212,
+                    "min": 73.0,
+                    "25%": 114.75,
+                    "50%": 160.0,
+                    "75%": 193.0,
+                    "90%": 216.0,
+                    "99%": 369.68,
+                    "max": 401.0
+                },
+                "output_tokens": {
+                    "mean": 34291.933333,
+                    "std": 13208.724523,
+                    "min": 13044.0,
+                    "25%": 25584.25,
+                    "50%": 29446.5,
+                    "75%": 42535.5,
+                    "90%": 53215.5,
+                    "99%": 60000.0,
+                    "max": 60000.0
+                },
+                "total_tokens": {
+                    "mean": 34455.366667,
+                    "std": 13240.464096,
+                    "min": 13230.0,
+                    "25%": 25768.5,
+                    "50%": 29595.0,
+                    "75%": 42663.0,
+                    "90%": 53593.4,
+                    "99%": 60267.77,
+                    "max": 60293.0
+                },
+                "total_input_tokens": 4903,
+                "total_output_tokens": 1028758,
+                "total_tokens_count": 1033661
+            }
+        }
+    },
+    "num": 30
+}

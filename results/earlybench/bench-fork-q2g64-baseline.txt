@@ -1,0 +1,9 @@
+ggml_cuda_init: found 1 CUDA devices (Total VRAM: 15888 MiB):
+  Device 0: NVIDIA GeForce RTX 5060 Ti, compute capability 12.0, VMM: yes, VRAM: 15888 MiB
+load_backend: loaded CPU backend from /app/libggml-cpu-haswell.so
+| model                          |       size |     params | backend    | ngl |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | --------------: | -------------------: |
+| qwen35 27B Q2_0                |   7.05 GiB |    26.90 B | CUDA       | 999 |           pp512 |      1027.57 ± 41.69 |
+| qwen35 27B Q2_0                |   7.05 GiB |    26.90 B | CUDA       | 999 |           tg128 |         44.35 ± 0.36 |
+
+build: 4725def0a (10658)
