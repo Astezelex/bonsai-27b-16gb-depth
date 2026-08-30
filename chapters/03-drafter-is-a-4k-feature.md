@@ -5,6 +5,19 @@ The slim DSpark drafter is the headline change since Part 1. It is 3.1x smaller 
 is +73% to +93% on CUDA. That figure reproduces here on the first attempt: **+85.0%**, 42.11
 tokens/s to 77.88, measured the way it was published, with a short prompt and an empty cache.
 
+Against the drafter Part 1 used, the change is large in both directions:
+
+| | July, `dspark-Q4_1` | August, slim dflash `Q4_0` |
+|---|---|---|
+| file | 1,946,393,568 B | **631,712,480 B** |
+| decode with the drafter | 79.1 tok/s | 82.31 tok/s |
+| uplift over no draft | +78.2% | **+85.8%** |
+
+Smaller and faster at once, which is the headline the maintainers earned. One measurement
+detail belongs with it: the cold first repetition read 79.99 tok/s against 82.30 and 82.31
+warm. The warm figure is the one quoted and the cold one is reported here instead of being
+dropped.
+
 The question this chapter asks is what happens to that number when the cache is not empty,
 because a drafter that returns VRAM so it can be spent on context is a long-context feature by
 its own description.

@@ -24,7 +24,7 @@ nobody asked: the entire 16 GB story is one card.
 | file | bytes | role |
 |---|---|---|
 | `Ternary-Bonsai-27B-Q2_g64.gguf` | 7,585,330,240 | the model under test |
-| `Ternary-Bonsai-27B-PQ2_0.gguf` | 7,165,121,600 | the fork's re-encoding, chapter 7 |
+| `Ternary-Bonsai-27B-PQ2_0.gguf` | 7,165,121,600 | the fork's re-encoding, chapter 8 |
 | `dflash-slim-Q4_0.gguf` | 631,712,480 | the slim drafter, `n_ctx_train` 4,096 |
 | `kv-bias-q4_0.gguf` | 66,400 | centering bias, calibrated `-ctk q4_0 -c 512 --chunks 200` |
 | `Qwen3.6-27B-UD-IQ2_XXS.gguf` | 9,388,779,744 | the baseline, chapter 2 |
@@ -33,7 +33,7 @@ nobody asked: the entire 16 GB story is one card.
 
 The Wikipedia corpora are CC BY-SA and were built by streaming a dump and stopping at a byte
 target, with the two halves drawn from disjoint article ranges. The builder is in `scripts/`.
-The original self-generated corpus from Part 2 is kept because the control rung in chapter 5
+The original self-generated corpus from Part 2 is kept because the control rung in chapter 6
 needs it to reproduce the published number.
 
 ## Honesty rules, continued from Part 1
@@ -75,7 +75,7 @@ getting that wrong is a 57x error on MMLU-Redux.
 
 ```
 scripts/pasha_depth_sweep.sh      chapters 3 and 4: depth x centering x drafter, single card
-scripts/pasha_kld_ladder.sh       chapter 5: the KLD ladder and the isolation rungs
+scripts/pasha_kld_ladder.sh       chapter 6: the KLD ladder and the isolation rungs
 scripts/report_gate.py            accuracy with its cap rate, or a non-zero exit
 scripts/mk_part3_figdata.py       figdata-part3.json from the raw artefacts
 scripts/make_figures_part3.py     figures 8 to 11 from figdata-part3.json
@@ -89,10 +89,22 @@ anything new is measured.
 No figure in this part contains a hardcoded number. `figdata-part3.json` is generated from the
 review JSONLs, the sweep TSVs and the ladder output, and the figure script reads only that.
 
+## Two traps that cost time here and will cost yours
+
+Part 1 published its engine gotchas on the grounds that a negative result someone else does not
+have to rediscover is a contribution. Two more:
+
+- **Run CUDA containers with `--gpus` attached.** Without it the binary dies on `libcuda.so.1`
+  **before printing its help**, which reads exactly like "this build has no such flag". That
+  misreading produced a retracted upstream issue in July and repeated itself in August.
+- **Never read a number out of a truncated log.** A `| tail -25` on the perplexity output cut
+  the `Mean KLD` line off the top of the summary, which briefly read as the statistic not
+  existing at all. Capture to a file and parse the file.
+
 ## What would be most useful from someone else
 
 A card with more than 16 GB, so the drafter and a 262k context can be measured together at all.
-A host with 64 GB or more, so the KLD ladder reaches past 16,384. And chapter 8's item 1, a bias
+A host with 64 GB or more, so the KLD ladder reaches past 16,384. And chapter 9's item 1, a bias
 recalibrated at each rung, which needs no special hardware and would settle whether
 mean-centering is short-context by nature or only by default.
 

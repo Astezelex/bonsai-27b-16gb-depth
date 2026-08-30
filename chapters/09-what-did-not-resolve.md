@@ -7,7 +7,7 @@ settled here.
 
 ## 1. The centering bias was fitted at 512 tokens, and nobody knows if that is the problem
 
-The single most valuable follow-up in this part. Chapter 5 shows the centering benefit going
+The single most valuable follow-up in this part. Chapter 6 shows the centering benefit going
 -9.5%, -0.7%, +0.7% across n_ctx 512, 8,192 and 16,384. Every one of those rungs uses a bias
 calibrated at n_ctx 512, which is `llama-kv-mean-center`'s default and the value in its own
 usage line.
@@ -56,13 +56,13 @@ repository has the identity harness that would test it. It was not run.
 
 ## 5. Quality at the headline context
 
-Not an open question so much as a closed door, and chapter 6 is about it. Quality at 262,144
+Not an open question so much as a closed door, and chapter 7 is about it. Quality at 262,144
 tokens cannot be measured with `llama-perplexity` below roughly 160 GB of host RAM. The ladder
 stops at 16,384. Every quality statement in this part is bounded by that.
 
 ## 6. The remaining fork and mainline gap
 
-Chapter 7 measures 2.42% decode skew where the maintainers expect zero. The measurement is
+Chapter 8 measures 2.42% decode skew where the maintainers expect zero. The measurement is
 solid, the cause is not identified, and mainline b10588 against fork b10658 is seventy builds
 apart. A fork built from its own merge base would settle whether the residual is real or an
 artefact of that distance.

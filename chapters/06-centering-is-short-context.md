@@ -13,6 +13,16 @@ Everything else in this chapter is about what happens to it on the way to a depl
 
 ![Centering: absolute divergence against context, and the benefit by configuration](../figures/f10-centering-benefit.png)
 
+The maintainers' own documentation reports **-22.9%** for this configuration on a different
+model. The -24.6% measured here, on different hardware and against a held-out split, is an
+independent replication of the effect size, not just of the sign.
+
+Three caveats belong beside that number and not below it. The **maximum** KLD is marginally
+worse centered, 0.0253 against 0.0237, so the tail is not improved and only the bulk is. The
+sample is 12 chunks. And a KL divergence says the cached keys are closer to the F16 reference,
+**not** that a benchmark score moves. Those are different claims and this part does not make
+the second one.
+
 ## One variable at a time
 
 The published measurement and a 262k deployment differ in two ways at once: the V cache and the
@@ -77,7 +87,7 @@ Sixteen thousand tokens is 6.25% of the context this feature was built to enable
 
 ## The bias itself was fitted at 512 tokens
 
-One limitation belongs here and not buried in chapter 8, because it bears directly on the
+One limitation belongs here and not buried in chapter 9, because it bears directly on the
 paragraph above.
 
 `llama-kv-mean-center` estimates the per-channel means it stores from calibration text run at a
@@ -120,4 +130,4 @@ attached, which the maintainers state and which holds here.
 So the recommendation is not to turn the feature off. It costs nothing, it is correct at short
 context, and there is no reason to disable something free. The recommendation is that
 **-24.6% should not be quoted as its effect at 262k**, because the measurement that would
-support such a claim has never been run by anyone. Chapter 6 explains why not.
+support such a claim has never been run by anyone. Chapter 7 explains why not.

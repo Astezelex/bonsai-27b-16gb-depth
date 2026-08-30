@@ -72,11 +72,11 @@ suggested fix.
 | Centering is validated together with speculative decoding | **holds**, costs under 0.3% and 2 MiB |
 | The slim drafter is about 0.6 GB and gives +73% to +93% | **holds at depth 0**, +85.0%, and +104.2% at 8k |
 | Mean-centering gives -24.6% mean KLD | **holds exactly**, in the configuration it was measured in |
-| A mismatched bias is rejected at load with a clear message | **does not hold**, chapter 7 |
-| The byte-identical-at-temp-0 property still holds by construction | **does not hold**, 2 of 5 |
+| A mismatched bias is rejected at load with a clear message | **does not hold**, chapter 8 |
+| The byte-identical-at-temp-0 property still holds by construction | **does not hold**, 2 of 5, chapter 5 |
 | The 1.3 GB the slim drafter returns is basically free context | **does not hold**, chapter 4 |
 | Native CUDA 13.3 builds are landing in the release matrix | **does not hold**, 12.4 and 12.8 only |
-| The 4.5% fork-mainline skew is gone by construction | **halved, not gone**, 2.42%, chapter 7 |
+| The 4.5% fork-mainline skew is gone by construction | **halved, not gone**, 2.42%, chapter 8 |
 
 ## Chapters
 
@@ -86,11 +86,12 @@ suggested fix.
 | 2 | [The instrument still reads true](chapters/02-instrument-reads-true.md) |
 | 3 | [Speculative decoding is a 4,096-token feature](chapters/03-drafter-is-a-4k-feature.md) |
 | 4 | [The returned VRAM is re-spent, not returned](chapters/04-vram-is-respent.md) |
-| 5 | [Mean-centering is a short-context result](chapters/05-centering-is-short-context.md) |
-| 6 | [Why nobody had measured this](chapters/06-the-tooling-ceiling.md) |
-| 7 | [Engine parity, packaging, and one missing metadata key](chapters/07-parity-packaging-metadata.md) |
-| 8 | [What did not resolve](chapters/08-what-did-not-resolve.md) |
-| 9 | [The box, the rules, and how to redo any of it](chapters/09-reproduce-and-provenance.md) |
+| 5 | [The byte-identical property does not hold](chapters/05-byte-identity-does-not-hold.md) |
+| 6 | [Mean-centering is a short-context result](chapters/06-centering-is-short-context.md) |
+| 7 | [Why nobody had measured this](chapters/07-the-tooling-ceiling.md) |
+| 8 | [Engine parity, packaging, and one missing metadata key](chapters/08-parity-packaging-metadata.md) |
+| 9 | [What did not resolve](chapters/09-what-did-not-resolve.md) |
+| 10 | [The box, the rules, and how to redo any of it](chapters/10-reproduce-and-provenance.md) |
 
 ## Quickstart
 
@@ -98,7 +99,7 @@ suggested fix.
 # chapters 3 and 4: depth x centering x drafter, single card, about 100 minutes
 CARD=1 FILLER=natural bash scripts/pasha_depth_sweep.sh
 
-# chapter 5: the KLD ladder, aborts if its control rung fails to reproduce -24.6%
+# chapter 6: the KLD ladder, aborts if its control rung fails to reproduce -24.6%
 CARD=1 bash scripts/pasha_kld_ladder.sh
 
 # any accuracy figure, with the cap rate it is meaningless without
@@ -111,7 +112,7 @@ python3 scripts/make_figures_part3.py figures/figdata-part3.json figures/
 
 The sweep prints its own ETA before it starts and refuses to run without a recorded
 single-cell proof beside it. The ladder aborts unless its control rung reproduces Part 2's
-published -24.6% within tolerance. Both refusals are deliberate: chapter 9 says why.
+published -24.6% within tolerance. Both refusals are deliberate: chapter 10 says why.
 
 ## What would help most from someone else
 

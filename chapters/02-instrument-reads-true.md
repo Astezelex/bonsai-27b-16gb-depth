@@ -29,6 +29,28 @@ on MMLU-Redux, accuracy restricted to items the model actually finished **flips 
 quant**, 0.901 against 0.879 in August and 0.907 against 0.882 in July. On the problems it
 completes, IQ2_XXS is the stronger of the two. It completes fewer of them.
 
+## The engine did not get faster or slower
+
+The rebase is the other thing that could have moved the baseline, and it did not.
+
+Decode went **44.4 to 44.74 tok/s, +0.8%**, which is inside run-to-run noise. For a project
+whose proposition is that ternary is fast on small cards, not regressing across a rebase onto
+current mainline is the result you want, and it is worth saying plainly because a null result
+here is easy to skip past.
+
+The rebase also removed a confound Part 1 could not. In July the two models had to be given
+different engines, because the fork ran standard quants slower than mainline. Both now run on
+one binary:
+
+| same binary, b10658, one card | file size | pp512 | tg128 |
+|---|---|---|---|
+| Bonsai 27B `Q2_g64` | 7.05 GiB | 1046.85 | **44.74** |
+| Qwen3.6-27B `UD-IQ2_XXS` | 8.73 GiB | 997.20 | 35.05 |
+
+Ternary is **27.6% faster at decode and 1.68 GiB smaller** with no engine difference left to
+explain it away. Part 1's cross-engine figures were 44.4 against 35.8, so if anything the
+advantage was understated before.
+
 ## What the item-level pairing adds
 
 Part 1 counted caps. It did not test them item by item. Both models answered the same

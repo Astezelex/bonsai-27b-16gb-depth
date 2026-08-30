@@ -54,13 +54,38 @@ about **17,800 more tokens of context**. That is a real gain for a re-download.
 
 What was not tested is the behavioural half of the claim. "Same weights, exact re-encoding"
 predicts identical output at temperature 0, and this repository already has an identity harness
-that would answer it. It was not run. Chapter 8 lists it with the other open items.
+that would answer it. It was not run. Chapter 9 lists it with the other open items.
+
+## Two July-era defects are gone
+
+Part 1 could not use two of the three weight files. Both now work, and each was checked for
+non-empty generated output and not merely for a zero exit code.
+
+| file | July | August |
+|---|---|---|
+| `Ternary-Bonsai-27B-Q2_0.gguf` | the file Part 1 used | **refused by v7** |
+| `Ternary-Bonsai-27B-Q2_g64.gguf` | reported as gibberish upstream | **works, 1,745 coherent characters** |
+| `Ternary-Bonsai-27B-PQ2_0.gguf` | loaded nowhere, `invalid ggml type 142` | **works, 1,747 coherent characters** |
+
+The old `Q2_0` being refused is a deliberate migration and not a regression, and it is the one
+change that breaks existing setups. Anyone pinned to that file has to re-download. The cost of
+the newer file is 0.42 GiB, which is why resident VRAM at a 262k context moved from 12.9 to
+13.27 GiB between the two parts.
 
 ## Packaging and build, both as described
 
 `Q2_g64` loads on b10658 and the old `Q2_0` is refused with a pointer to the replacement, as
-stated. The prebuilt CUDA release asset initialises on sm_120 with no source build, which
-removes a step Part 1 had to document at length.
+stated. The prebuilt CUDA release asset initialises on sm_120 with no source build:
+
+```
+version: 0.2.0-dev (build 10658, commit 4725def0a)
+Device 0: NVIDIA GeForce RTX 5060 Ti, compute capability 12.0, VMM: yes, 15888 MiB
+```
+
+For a Blackwell owner that is the single biggest practical change in the whole diff. Part 1 had
+to carry a warning about building inside a CUDA devel container with the GPU attached at
+configure time, because a GPU-less configure caches `CUDA_DRIVER=NOTFOUND` and the build then
+fails in a way that does not name its cause. That entire step is gone.
 
 The one part of the build claim that does not hold is the CUDA version. The maintainers wrote
 that native CUDA 13.3 builds for Linux and Windows "are landing in the release matrix". The
@@ -73,7 +98,8 @@ The maintainers state that calibrating the centering bias with `-ctk q4_0` is re
 K-rotation state matches the serving config", and that "a mismatched bias is rejected at load
 with a clear message".
 
-The first half is enforced. The second half is not.
+The first half is enforced. The second half is not, and an earlier draft of this work repeated
+the maintainers' sentence without testing it. It is corrected here, not dropped.
 
 A **structurally corrupt** bias is rejected, cleanly and with a good message:
 

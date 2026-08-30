@@ -60,12 +60,15 @@ is publishing the only numbers its instruments return.
   on what the long context *contains*, not only how long it is, and the difference between a
   foreign prefix and self-generated reasoning is larger than the difference between 8k and 33k.
 - **Not a general claim about llama.cpp.** Everything here is one model family, one fork, two
-  cards, one host. Chapter 9 states the box and the limits.
+  cards, one host. Chapter 10 states the box and the limits.
 
 ## The shape of the rest
 
 Chapter 2 establishes that the instrument still reads true: Part 1's quality anchors replicate
-on the rebased engine, with identical cap counts, so any change measured afterwards belongs to
-the features and not to the harness. Chapters 3 through 5 take the three features above to
-depth. Chapter 6 measures the tooling ceiling that explains why this had not been done.
-Chapters 7 and 8 cover engine parity, packaging, and the two results that did not resolve.
+on the rebased engine with identical cap counts, and the rebase moved decode by 0.8%, so any
+change measured afterwards belongs to the features and not to the harness. Chapters 3 and 4 take
+the drafter to depth and then weigh what it costs. Chapter 5 is the one finding here that is not
+about depth at all, a documented byte-identity property that does not hold. Chapter 6 does the
+same for mean-centering. Chapter 7 measures the tooling ceiling that explains why none of this
+had been done. Chapters 8 through 10 cover engine parity and packaging, the seven things that
+did not resolve, and how to redo any of it.

@@ -13,7 +13,7 @@ tooling can produce.**
 ## The quality instrument has a hard ceiling, and it is host RAM
 
 `llama-perplexity` is how quality is measured in this ecosystem, and it is what produces the
-KL-divergence numbers in chapter 5. Before it scores anything it allocates a buffer of
+KL-divergence numbers in chapter 6. Before it scores anything it allocates a buffer of
 `n_ctx x n_vocab x 4` bytes. For a 151,936-token vocabulary that is:
 
 | n_ctx | host memory reserved |
@@ -53,7 +53,7 @@ help on the build under test:
 - there is **no** flag for a draft model
 
 So the one tool that can put tokens in the cache before it measures cannot switch on either of
-the two features whose depth behaviour this part is about. Everything in chapters 3 and 5 had
+the two features whose depth behaviour this part is about. Everything in chapters 3 and 6 had
 to be driven through `llama-server` and read from its own timings and counters, which is a
 different instrument with different overheads and needs a prefix built and verified by hand.
 

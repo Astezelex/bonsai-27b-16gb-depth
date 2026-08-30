@@ -1,0 +1,11 @@
+pid   chars  q41==base  bf16==base  q41==bf16  q41==bf16(+rc)  reasoning_only  finish(b,q,f)
+r1     1329       True        True       True            True            True  ('length', 'length', 'length')
+r2     1530       True        True       True            True            True  ('length', 'length', 'length')
+c1     2002       True        True       True            True            True  ('length', 'length', 'length')
+c2     1793      False       False       True            True            True  ('length', 'length', 'length')
+r3     1213      False       False       True            True            True  ('length', 'length', 'length')
+
+PUBLISHED CLAIM: Q4_1 == bf16, 5/5 at temp 0
+  directly measured now: 5/5 (July capture method)
+  with reasoning+content: 5/5
+  (drafted vs undrafted, for context: 3/5 identical)
